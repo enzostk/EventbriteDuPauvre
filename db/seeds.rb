@@ -29,10 +29,10 @@ puts '#' * 20
 puts '   Creating users'
 puts '#' * 20
 
-10.times do
+10.times do |i|
   User.create!(
-    email: Faker::Internet.email,
-    encrypted_password: 'password',
+    email: "testuser#{i}@yopmail.com",
+    encrypted_password: 'password'
   )
 end
 
