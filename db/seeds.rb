@@ -35,13 +35,13 @@ puts '#' * 20
     encrypted_password: 'password'
   )
 end
-
 puts '   Users created'
 puts '#' * 20
 puts '',''
 puts '#' * 20
 puts '   Creating events'
 puts '#' * 20
+
 10.times do
   Event.create!(
     start_date: Time.now + rand(10000..50000),
@@ -50,29 +50,13 @@ puts '#' * 20
     description: Faker::Lorem.sentence(word_count: 20),
     price: rand(3..90) * 10,
     location: Faker::Address.city,
-    host_id: User.all.sample.id
+    admin_id: rand(1..5)
   )
 end
 
 puts '   Events created'
 puts '#' * 20
 puts '',''
-puts '#' * 20
-puts 'Creating attendances'
-puts '#' * 20
-# users_ids = User.all.ids
-# Event.all.each do |event|
-#   (users_ids - [event.host.id]).sample(rand(2..5)).each do |user_id|
-#     Attendance.create!(
-#       stripe_customer_id: Faker::Alphanumeric.unique.alpha(number: 10),
-#       attended_event_id: event.id,
-#       guest_id: user_id
-#     )
-#     end
-# end
-
-puts '   Events created'
-puts '#' * 20
 puts '',''
 puts '###################################'
 puts '#    ET JE RENTRE À MA MAISON     #'

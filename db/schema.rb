@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_21_110419) do
+ActiveRecord::Schema.define(version: 2022_02_21_173614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 2022_02_21_110419) do
     t.text "description"
     t.integer "price"
     t.string "location"
-    t.bigint "host_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["host_id"], name: "index_events_on_host_id"
+    t.bigint "admin_id"
+    t.index ["admin_id"], name: "index_events_on_admin_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,4 +45,5 @@ ActiveRecord::Schema.define(version: 2022_02_21_110419) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "events", "users", column: "admin_id"
 end
