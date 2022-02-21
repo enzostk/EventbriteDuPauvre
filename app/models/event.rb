@@ -1,13 +1,8 @@
 class Event < ApplicationRecord
    
-  # 1 - N association with Attendance as attended event
-   has_many :attendances, foreign_key: 'attended_event_id'
-
-   # N - 1 association with host (user)
-   belongs_to :host, class_name: 'User'
- 
-   # N - N association with guests (users) through attendances as attended event
-   has_many :guests, through: :attendances, source: :guest
+  has_many :attendances
+  belongs_to :admin, class_name: 'User'
+  has_many :users, through: :attendances
 
   validates :title, :start_date, :duration,
   :description, :price, :location,

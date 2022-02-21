@@ -1,8 +1,8 @@
 class User < ApplicationRecord
- 
-  has_many :hosted_events, class_name: 'Event', foreign_key: 'host_id'
-  has_many :attendances, foreign_key: 'guest_id'
-  has_many :attended_events, through: :attendances, source: :attended_event
+  
+  has_many :attendances
+  has_many :attended_events, through: :attendances
+  has_many :admins, foreign_key: 'admin_id', class_name: 'Event'
   
   after_create :welcome_send
 
