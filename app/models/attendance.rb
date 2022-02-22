@@ -12,5 +12,4 @@ class Attendance < ApplicationRecord
     AttendanceMailer.user_join_event(self).deliver_now
   end
 
-
 end
