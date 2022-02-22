@@ -1,42 +1,32 @@
-    <div class="container">
-      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="<%= root_path %>" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <span class="fs-4">EventPauvre</span>
-        </a>
+  <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">EventBriteDuPauvre</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <ul class="nav nav-pills">
-          <li class="nav-item"><a href="<%= root_path %>" class="nav-link" >Home</a></li>
-          <li class="nav-item"><a href="<%=new_event_path%>" class="nav-link">Créer un event</a></li>
-
-          <% if current_user%>
-           <li class="nav-item">
-            <div class="dropdown show">
-              <a class="btn btn-secondary dropdown-toggle active py-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Mon Profil
-              </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#" style="color:#fe4219 ">Mon Profil</a>
-                  <a class="dropdown-item" href="<%=destroy_user_session_path%>" style="color:#fe4219">Se déconnecter</a>
-                </div>
-            </div>
+      <div class="collapse navbar-collapse" id="navbarsExample02">
+        <ul class="navbar-nav me-auto">
+          <% if user_signed_in? %>
+          <li class="nav-item mx-2">
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
           </li>
-          <%else%>
-          <li class="nav-item">
-            <div class="dropdown show">
-              <a class="btn btn-secondary dropdown-toggle active py-2" href="<%=new_user_session_path%>" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Connexion
-              </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="<%=new_user_registration_path%>" style="color:#fe4219 ">S'inscrire</a>
-                <a class="dropdown-item" href="<%= new_user_session_path%>" style="color:#fe4219">Connexion</a>
-                </div>
-            </div>
+          <li class="nav-item mx-2">
+            <%= link_to "My Profile", edit_user_registration_path %>
           </li>
-         <%end%>
+          <% else %>
+          <li class="nav-item mx-2">
+            <%= link_to "Sign Up", new_user_registration_path %>
+          </li>
+          <li class="nav-item mx-2">
+            <%= link_to "Log In", new_user_session_path %>
+          </li>
+          <% end %>
+          <li class="nav-items mx-2">
+            <%= link_to "New Event", new_event_path %>
+          </li>
         </ul>
-      </header>
-
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      </div>
 
     </div>
+  </nav>
