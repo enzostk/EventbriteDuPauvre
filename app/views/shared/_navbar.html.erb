@@ -1,19 +1,42 @@
-  <header class="p-3 bg-dark text-white">
     <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="<%= root_path %>" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <span class="fs-4">EventPauvre</span>
         </a>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Create an Event</a></li>
-        </ul>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="<%= root_path %>" class="nav-link" >Home</a></li>
+          <li class="nav-item"><a href="<%=new_event_path%>" class="nav-link">Créer un event</a></li>
 
-        <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
-        </div>
-      </div>
+          <% if current_user%>
+           <li class="nav-item">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle active py-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Mon Profil
+              </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#" style="color:#fe4219 ">Mon Profil</a>
+                  <a class="dropdown-item" href="<%=destroy_user_session_path%>" style="color:#fe4219">Se déconnecter</a>
+                </div>
+            </div>
+          </li>
+          <%else%>
+          <li class="nav-item">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle active py-2" href="<%=new_user_session_path%>" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Connexion
+              </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="<%=new_user_registration_path%>" style="color:#fe4219 ">S'inscrire</a>
+                <a class="dropdown-item" href="<%= new_user_session_path%>" style="color:#fe4219">Connexion</a>
+                </div>
+            </div>
+          </li>
+         <%end%>
+        </ul>
+      </header>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
     </div>
-  </header>

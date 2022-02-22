@@ -1,4 +1,12 @@
 class EventsController < ApplicationController
+  
   def index
   end
+
+  def secret
+  end
+
+  def new
+  end
+  
 end
