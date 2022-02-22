@@ -25,6 +25,8 @@ class Event < ApplicationRecord
   :numericality => { :only_integer => true},
   :inclusion => { :in => 1..1000 }
 
+ 
+
   def display_start_date
     start_date.strftime("%a, %b %-d")
   end

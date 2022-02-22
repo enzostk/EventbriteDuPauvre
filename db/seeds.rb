@@ -32,9 +32,10 @@ puts '#' * 20
 10.times do |i|
   User.create!(
     email: "testuser#{i}@yopmail.com",
-    encrypted_password: 'password'
+    password: "password"
   )
 end
+
 puts '   Users created'
 puts '#' * 20
 puts '',''
